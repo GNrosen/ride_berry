@@ -1,0 +1,100 @@
+<html>
+<head>
+<!-- <meta name="google-signin-client_id" content="491529507254-8idsjs0o2rabjeol7n9kcip4vvbev57e.apps.googleusercontent.com"> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">	
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+<!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+
+
+
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		<div class="welcome">
+			<h1 style="text-align: center;">Lets Go Eat!</h1>
+			<p style='text-align: center;'><a href="#login"><input type ="submit" value="Login Here" class="btn" style=""></a>
+			<a href="#registration" style=""><input type="submit" value="Register Here" class="btn" style=" text-align: center; margin-right: 20px;"></a></p>
+		</div>
+	</div>
+	<div class="row">
+		<div id="registration">
+			<!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> --> 
+			<div class='col-md-8 col-md-offset-2'>
+				<h3>Register</h3>
+				<form action='/register' method='post'>
+					<div class="form-group">
+						<label for="name">First Name:</label>
+						<input type='text' class='form-control' name="first_name" placeholder="First Name">
+					</div>
+					<div class="form-group">
+						<label for="user_name">Last Name:</label>
+						<input type='text' class='form-control' name="last_name" placeholder="Last Name">
+					</div>
+					<div class="form-group">
+						<label for="user_name">Phone Number:</label>
+						<input type='text' class='form-control' name="phone_number" placeholder="Phone Numbers">
+					</div>
+					<div class="form-group">
+						<label for="email">Email address:</label>
+						<input type="email" class="form-control" name="email" placeholder="Email">
+					</div>
+					<div class="form-group">
+						<label for="password">Password:</label>
+						<input type="password" class="form-control" name="password" placeholder="Password">
+					</div>
+					<div class="form-group">
+						<label for="confirmpassword">Confirm Password:</label>
+						<input type="password" class="form-control" name="confirmpassword" placeholder="Confirm Passoword">
+					</div>
+		  			{% with messages = get_flashed_messages(category_filter=['regis_errors']) %}
+						{% if messages %}
+							{% for message in messages %}
+								<p class="warning">{{message}}</p>
+							{% endfor %}
+						{% endif %}
+					{% endwith %}
+					<button type="submit" class="btn">Register</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div id="login">
+			<div class='col-md-8 col-md-offset-2'>
+				<h3>Login</h3>
+				<form action="/login" method='post'>
+					<div classs="form-group">
+						<label for="emailcheck">Email:</label>
+						<input type="text" class="form-control" name="emailcheck" placeholder="Enter Email">
+					</div>
+					<div class="form-group">
+						<label for="passwordcheck">Password:</label>
+						<input type="password" class="form-control" name="passwordcheck" placeholder="Enter Password">
+					</div>
+				{% with messages = get_flashed_messages(category_filter=['login_errors']) %}
+					{% if messages %}
+						{% for message in messages %}
+							<p class="warning">{{message}}</p>
+						{% endfor %}
+					{% endif %}
+				{% endwith %}
+					<button type="submit" class="btn">Login</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 			<a href="" onclick="signOut();">Sign out</a>
+			<script>
+			  function signOut() {
+			    var auth2 = gapi.auth2.getAuthInstance();
+			    auth2.signOut().then(function () {
+			      console.log('User signed out.');
+			    });
+			  }
+		</script> -->
+		</div>
+</body>
+</html>

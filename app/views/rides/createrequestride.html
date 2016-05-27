@@ -1,0 +1,139 @@
+<html>
+<head>
+	<title>The Station</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a style=" color: white;" class="navbar-brand" href="#">Ride.Berry</a>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a style=" color: white;" href="/profile/{{session['id']}}">Profile<span class="sr-only">(current)</span></a></li>
+				<li><a style=" color: white;" href="/grouppage">Rides</a></li>
+<!-- 				<li><a href="/users/edit">Profile</a></li> -->
+			</ul>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav navbar-right">
+		<li class="dropdown">
+			<a style=" color: white;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{ session['first_name'] }}<span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a class="navbar-text" href="/logout">Logout</a></li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-5 col-md-offset-3">
+			<form class="form-horizontal col-sm-offset-1" action="/addrides/{{ session['id'] }}", method="post">
+				<h2>Create Ride</h2>
+				<div class="form-group">
+					<label for="place" class="col-sm-3 control-label">Ride Name:</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" name='ride_name' placeholder="Ride Name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="place" class="col-sm-2 control-label">Place:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name='place' placeholder="Restaurant">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="time" class="col-sm-2 control-label">Time:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name='depart_time' placeholder=" Planned Departure Time"><br>
+					</div>
+				</div>
+<!-- 				<div class="form-group">
+					<label for="time" class="col-sm-2 control-label">Time:</label>
+					<div class='input-group date' id='datetimepicker3'>
+						<input type='text' class="form-control" />
+							<span class="input-group-addon">
+							<span class="glyphicon glyphicon-time"></span>
+							</span>
+					</div>
+				</div>
+				<script type="text/javascript">
+					$(function () {
+						$('#datetimepicker3').datetimepicker({
+							format: 'LT'
+						});
+					});
+				</script> -->
+				<div class="form-group">
+					<label for="seats" class="col-sm-3 control-label">Open Seats:</label>
+					<div class="col-sm-9">
+						<input type="number" class="form-control col-sm-2" name='open_seats' placeholder="# of Open Seats"><br>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="AddNotes" class="col-sm-12">Add Notes:</label>
+					<textarea class="form-control col-sm-2" rows="3" style=" margin-left: 15px;" name="add_notes" placeholder="Provide order, allergy info, notes, etc..."></textarea><br>
+					{% with messages = get_flashed_messages(category_filter=['post_errors']) %}
+						{% if messages %}
+							{% for message in messages %}
+								<p class="warning">{{ message }}</p>
+							{% endfor %}
+						{% endif %}
+					{% endwith %}
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn pull-right pl">Create</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="col-md-1"></div>
+<!-- 		<div class="col-md-5">
+			<form class="form-horizontal" action="", method="post">
+				<h2>Request Ride</h2>
+				<div class="form-group">
+					<label for="place" class="col-sm-2 control-label">Place:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" placeholder="Restaurant">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="time" class="col-sm-2 control-label">Time:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" placeholder="Planned Departure Time"><br>
+					</div>
+				</div>
+				<div class="form-group col-sm-11">
+					<label for="AddNotes" class="col-sm-12">Add Notes:</label>
+					<textarea class="form-control col-sm-offset-2" rows="3" name="message" placeholder="Provide order, allergy info, notes, etc..."></textarea><br>
+					{% with messages = get_flashed_messages(category_filter=['post_errors']) %}
+						{% if messages %}
+							{% for message in messages %}
+								<p class="warning">{{ message }}</p>
+							{% endfor %}
+						{% endif %}
+					{% endwith %}
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary pull-right">Request</button>
+					</div>
+				</div>
+			</form>
+		</div> -->
+	</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>

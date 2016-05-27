@@ -2,10 +2,14 @@
     Base Configuration File
 """
 """ Put Generic Configurations here """
+import os
+
+
+
 class Config(object):
     DEBUG = False
     TESTING = False
-    SECRET_KEY = 'someSecretKey'
+    SECRET_KEY = os.urandom(32)
 
 """ Put Development Specific Configurations here """
 class DevelopmentConfig(Config):

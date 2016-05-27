@@ -1,0 +1,93 @@
+<html>
+<head>
+	<meta name="google-signin-client_id" content="491529507254-8idsjs0o2rabjeol7n9kcip4vvbev57e.apps.googleusercontent.com">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+
+</head>
+<body>
+<nav class="navbar navbar-default">
+	<div class="container">
+		<div class="navbar-header">
+	 		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Ride.Berry</a>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a href="/profile/{{session['id']}}">Profile<span class="sr-only">(current)</span></a></li>
+<!-- 				<li><a href="/users/edit">Profile</a></li> -->
+			</ul>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav navbar-right">
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{ session['first_name'] }}<span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a class="navbar-text" href="/logout">Logout</a></li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav>
+	<div class="container">
+	<div class="row">
+		<div class="col-md-9">
+			<form class="form-horizontal col-sm-offset-5" action="/newgroup" method="post">
+				<h2>Create Group</h2>
+				<div class="form-group">
+					<label for="group_name" class="col-sm-5 control-label">Group Name:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name='group_name' placeholder="Group Name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="location" class="col-sm-5 control-label">Location:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name='location' placeholder=" Location"><br>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="type" class="col-sm-5 control-label">Type:</label>
+					<div class="col-sm-9">
+						<input type="number" class="form-control col-sm-2" placeholder="Business? Club? Other?"><br>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-3 col-sm-9">
+					</div>
+				</div>
+				<div class="form-group col-sm-11">
+					<label for="AddNotes" class="col-sm-12">Add Notes:</label>
+					<textarea class="form-control col-sm-offset-2" rows="3" name="message" placeholder="Provide order, allergy info, notes, etc..."></textarea><br>
+					{% with messages = get_flashed_messages(category_filter=['post_errors']) %}
+						{% if messages %}
+							{% for message in messages %}
+								<p class="warning">{{ message }}</p>
+							{% endfor %}
+						{% endif %}
+					{% endwith %}
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<input type='submit' value='Create Group' class='btn btn-primary'>
+					</div>
+				</div>
+			</form>
+		</div>
+
+
+
+
+		<div class="col-md-6">
+			<form action='/grouppage' method='post'>
+
+
+			</form>
+		</div>
+	</div>
+</body>
+</html>

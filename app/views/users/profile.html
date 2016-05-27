@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head>
+	<title>My Profile</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+<body>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a style=" color: white;" class="navbar-brand" href="#">Ride.Berry</a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbary">
+			<ul class="nav navbar-nav">
+				<li><a style=" color: white;" href="/profile/{{session['id']}}">Profile<span class="sr-only">(current)</span></a></li>
+				<li><a style=" color: white;" href="/grouppage">Rides</a></li>
+<!--                 <li><a href="/users/edit">Profile</a></li> -->
+			</ul>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav navbar-right">
+		<li class="dropdown">
+			<a style=" color: white;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{ session['first_name'] }}<span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a class="navbar-text" href="/logout">Logout</a></li>
+			</ul>
+		</li>
+		</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav>
+<div class="container profile">
+	<div class="col-md-12 col-md-offset-3">
+		<h1>Profile</h1>
+	</div>
+	<div class="col-md-12 col-md-offset-3">
+		<div class="col-md-5" style="border: solid black 1px; padding: 20px;">
+				{% for i in one_user%}
+				<label for="venmo">Venmo ID:</label> {{ i['venmo'] }}<br>
+				<label for="venmo">Fave Food:</label> {{ i['fav_food'] }}
+				{% endfor %}
+			<form action="/update_display">
+				<button type="submit" class="btn pull-right pl">Update Profile</button>
+			</form> 
+		</div>
+	</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>

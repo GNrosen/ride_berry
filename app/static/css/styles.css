@@ -1,3 +1,86 @@
-* {
-  font-family: monaco;
+.welcome {
+	background: #6EA7D2;
+}
+
+
+
+.welcome {
+	height: 1000px;
+/*	background: -webkit-linear-gradient(red, yellow);*/
+}
+
+.welcome h1 {
+	margin-top: 0px;
+	padding-top: 40px;
+	font-size: 70pt;
+	padding-bottom: 50px;
+	color: white;
+}
+
+.welcome .btn {
+	background-color: #F56E63;
+	color: white;
+} 
+
+#registration{
+	height: 1000px;
+	background: #F56E63;
+	padding-top: 20px;
+}
+
+#registration .btn {
+	background-color: #6EA7D2;
+}
+
+#login{
+	height: 1000px;
+	background: #6EA7D2;
+	padding-top: 40px;
+
+}
+
+#login .btn{
+	background: #F56E63;
+	color: white;
+}
+
+#registration h3{
+	color: white;
+}
+
+#registration form {
+	color: white;
+}
+
+#login h3{
+	color: white;
+}
+
+
+#login form{
+	color: white;
+}
+.navbar{
+	background:#F56E63;
+}
+
+
+.whitetext{
+	color:white;
+}
+
+.pl{
+	background:#6EA7D2;
+	color: white;
+}
+.warning{
+	color: black;
+}
+
+#details ul li {
+	list-style: none;
+}
+
+.modal-body{
+	height: 200px;
 }
